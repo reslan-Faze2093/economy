@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأنظمة الاقتصادية - تعلّم واختبر معلوماتك</title>
+    <meta name="description" content="منصة تعليمية تفاعلية لفهم الأنظمة الاقتصادية المختلفة: الرأسمالي، الاشتراكي، المختلط، والإسلامي.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        arabic: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: 'hsl(174, 60%, 35%)',
+                            foreground: 'hsl(0, 0%, 100%)',
+                            light: 'hsl(174, 50%, 90%)',
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(40, 70%, 50%)',
+                            foreground: 'hsl(0, 0%, 100%)',
+                        },
+                        success: {
+                            DEFAULT: 'hsl(145, 60%, 40%)',
+                            foreground: 'hsl(0, 0%, 100%)',
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(0, 70%, 50%)',
+                            foreground: 'hsl(0, 0%, 100%)',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: hsl(200, 20%, 98%);
+            color: hsl(200, 50%, 10%);
+            line-height: 1.7;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: hsl(200, 15%, 92%);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: hsl(174, 60%, 35%, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(174, 60%, 35%, 0.5);
+        }
+        
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.4s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-bounce {
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(to left, hsl(174, 60%, 35%), hsl(40, 70%, 50%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: hsl(174, 60%, 35%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary:hover {
+            background: hsl(174, 60%, 30%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px -4px hsl(174, 60%, 35%, 0.3);
+        }
+        
+        .btn-secondary {
+            background: hsl(40, 70%, 50%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: hsl(40, 70%, 45%);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: hsl(174, 60%, 35%);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid hsl(174, 60%, 35%);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-outline:hover {
+            background: hsl(174, 60%, 35%);
+            color: white;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px -4px hsl(200, 50%, 10%, 0.1);
+            border: 1px solid hsl(200, 20%, 90%);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 30px -4px hsl(174, 60%, 35%, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        /* Quiz options */
+        .quiz-option {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid hsl(200, 20%, 85%);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: right;
+            width: 100%;
+        }
+        .quiz-option:hover {
+            border-color: hsl(174, 60%, 35%);
+            background: hsl(174, 50%, 95%);
+        }
+        .quiz-option.selected {
+            border-color: hsl(174, 60%, 35%);
+            background: hsl(174, 50%, 90%);
+        }
+        .quiz-option.correct {
+            border-color: hsl(145, 60%, 40%);
+            background: hsl(145, 60%, 95%);
+        }
+        .quiz-option.incorrect {
+            border-color: hsl(0, 70%, 50%);
+            background: hsl(0, 70%, 95%);
+        }
+        
+        /* Match items */
+        .match-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid hsl(200, 20%, 85%);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: right;
+        }
+        .match-item:hover {
+            border-color: hsl(174, 60%, 35%);
+        }
+        .match-item.selected {
+            border-color: hsl(174, 60%, 35%);
+            background: hsl(174, 50%, 90%);
+        }
+        .match-item.matched {
+            border-color: hsl(40, 70%, 50%);
+            background: hsl(40, 70%, 95%);
+        }
+        .match-item.correct {
+            border-color: hsl(145, 60%, 40%);
+            background: hsl(145, 60%, 95%);
+        }
+        .match-item.incorrect {
+            border-color: hsl(0, 70%, 50%);
+            background: hsl(0, 70%, 95%);
+        }
+        
+        /* Sort items */
+        .sort-item {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid hsl(200, 20%, 85%);
+            background: white;
+            cursor: grab;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sort-item:active {
+            cursor: grabbing;
+        }
+        .sort-item.dragging {
+            opacity: 0.5;
+        }
+        
+        .drop-zone {
+            min-height: 120px;
+            border: 2px dashed hsl(200, 20%, 85%);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.2s;
+        }
+        .drop-zone.drag-over {
+            border-color: hsl(174, 60%, 35%);
+            background: hsl(174, 50%, 95%);
+        }
+        
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px -4px hsl(200, 50%, 10%, 0.1);
+        }
+        .comparison-table th {
+            background: hsl(174, 60%, 35%);
+            color: white;
+            padding: 1rem;
+            text-align: right;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .comparison-table th:hover {
+            background: hsl(174, 60%, 30%);
+        }
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid hsl(200, 20%, 90%);
+        }
+        .comparison-table tr:nth-child(even) {
+            background: hsl(200, 15%, 97%);
+        }
+        .comparison-table tr:hover td {
+            background: hsl(174, 50%, 95%);
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: hsl(200, 50%, 10%, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 28rem;
+            margin: 1rem;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        
+        /* Section transitions */
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Progress bar */
+        .progress-bar {
+            height: 0.5rem;
+            background: hsl(200, 15%, 92%);
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: hsl(174, 60%, 35%);
+            border-radius: 0.25rem;
+            transition: width 0.5s ease-out;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 50;
+            transition: all 0.3s;
+        }
+        .header.scrolled {
+            background: hsl(0, 0%, 100%, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px -4px hsl(200, 50%, 10%, 0.1);
+        }
+        
+        /* Nav button */
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 500;
+        }
+        .nav-btn:hover {
+            background: hsl(174, 50%, 90%);
+        }
+        .nav-btn.active {
+            background: hsl(174, 60%, 35%);
+            color: white;
+        }
+        
+        /* Hide scrollbar for mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-lg md:text-xl font-bold">اقتصادبيديا </span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1" id="desktopNav">
+                    <button class="nav-btn active" data-section="home">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>الرئيسية</span>
+                    </button>
+                    <button class="nav-btn" data-section="systems">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
+                        <span>الأنظمة</span>
+                    </button>
+                    <button class="nav-btn" data-section="comparison">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                        <span>المقارنة</span>
+                    </button>
+                    <button class="nav-btn" data-section="quiz">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i>
+                        <span>الاختبار</span>
+                    </button>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100" id="mobileMenuBtn">
+                    <i data-lucide="menu" class="w-6 h-6" id="menuIcon"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <nav class="mobile-menu md:hidden border-t border-gray-200" id="mobileNav">
+                <div class="py-4 space-y-2">
+                    <button class="nav-btn w-full active" data-section="home">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>الرئيسية</span>
+                    </button>
+                    <button class="nav-btn w-full" data-section="systems">
+                        <i data-lucide="book-open" class="w-5 h-5"></i>
+                        <span>الأنظمة</span>
+                    </button>
+                    <button class="nav-btn w-full" data-section="comparison">
+                        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                        <span>المقارنة</span>
+                    </button>
+                    <button class="nav-btn w-full" data-section="quiz">
+                        <i data-lucide="help-circle" class="w-5 h-5"></i>
+                        <span>الاختبار</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20" style="background: linear-gradient(180deg, hsl(200, 20%, 98%), hsl(174, 50%, 95%));">
+        <!-- Decorative Elements -->
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
+        
+        <!-- Floating Icons -->
+        <div class="absolute top-20 right-10 opacity-10 animate-float hidden md:block" style="animation-delay: 0s;">
+            <i data-lucide="trending-up" class="w-16 h-16 text-primary"></i>
+        </div>
+        <div class="absolute top-32 left-20 opacity-10 animate-float hidden md:block" style="animation-delay: 0.5s;">
+            <i data-lucide="users" class="w-16 h-16 text-primary"></i>
+        </div>
+        <div class="absolute bottom-32 right-20 opacity-10 animate-float hidden md:block" style="animation-delay: 1s;">
+            <i data-lucide="scale" class="w-16 h-16 text-primary"></i>
+        </div>
+        <div class="absolute bottom-20 left-10 opacity-10 animate-float hidden md:block" style="animation-delay: 1.5s;">
+            <i data-lucide="book-open" class="w-16 h-16 text-primary"></i>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-light text-primary mb-8 animate-fade-up">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span class="text-sm font-medium">تعلّم واختبر معلوماتك</span>
+            </div>
+            
+            <!-- Main Title -->
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up" style="animation-delay: 0.1s;">
+                <span>اكتشف عالم</span>
+                <br>
+                <span class="gradient-text">الأنظمة الاقتصادية</span>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto animate-fade-up" style="animation-delay: 0.2s;">
+                رحلة تعليمية تفاعلية لفهم الأنظمة الاقتصادية المختلفة، مقارنتها، واختبار معلوماتك من خلال أنشطة تفاعلية ممتعة
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay: 0.3s;">
+                <button class="btn-primary" onclick="navigateTo('systems')">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    ابدأ التعلّم
+                </button>
+                <button class="btn-outline" onclick="navigateTo('quiz')">
+                    اختبر معلوماتك
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fade-up" style="animation-delay: 0.4s;">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-1">4</div>
+                    <div class="text-sm text-gray-500">أنظمة اقتصادية</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-1">10</div>
+                    <div class="text-sm text-gray-500">أسئلة تفاعلية</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-1">3</div>
+                    <div class="text-sm text-gray-500">أنواع أنشطة</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-1">∞</div>
+                    <div class="text-sm text-gray-500">فرص للتعلم</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <button class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400 hover:text-primary transition-colors animate-bounce" onclick="navigateTo('systems')">
+            <i data-lucide="arrow-down" class="w-6 h-6"></i>
+        </button>
+    </section>
+    
+    <!-- Systems Section -->
+    <section id="systems" class="section py-16 md:py-24 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">الأنظمة الاقتصادية</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                تعرّف على أبرز الأنظمة الاقتصادية في العالم، خصائصها، مزاياها وعيوبها
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-8" id="systemsGrid">
+            <!-- Cards will be injected by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section id="comparison" class="section py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">جدول المقارنة التفاعلي</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    قارن بين الأنظمة الاقتصادية المختلفة - انقر على أي عمود لترتيب الجدول
+                </p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="comparison-table" id="comparisonTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">
+                                <div class="flex items-center gap-2">
+                                    <span>النظام</span>
+                                    <i data-lucide="arrow-up-down" class="w-4 h-4"></i>
+                                </div>
+                            </th>
+                            <th data-sort="ownership">
+                                <div class="flex items-center gap-2">
+                                    <span>الملكية</span>
+                                    <i data-lucide="arrow-up-down" class="w-4 h-4"></i>
+                                </div>
+                            </th>
+                            <th data-sort="governmentRole">
+                                <div class="flex items-center gap-2">
+                                    <span>دور الحكومة</span>
+                                    <i data-lucide="arrow-up-down" class="w-4 h-4"></i>
+                                </div>
+                            </th>
+                            <th data-sort="incentives">
+                                <div class="flex items-center gap-2">
+                                    <span>الحوافز</span>
+                                    <i data-lucide="arrow-up-down" class="w-4 h-4"></i>
+                                </div>
+                            </th>
+                            <th data-sort="ethicalControl">
+                                <div class="flex items-center gap-2">
+                                    <span>الرقابة الأخلاقية</span>
+                                    <i data-lucide="arrow-up-down" class="w-4 h-4"></i>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparisonBody">
+                        <!-- Rows will be injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="text-center text-sm text-gray-500 mt-4">
+                💡 نصيحة: انقر على رأس أي عمود لترتيب البيانات تصاعدياً أو تنازلياً
+            </p>
+        </div>
+    </section>
+    
+    <!-- Quiz Section -->
+    <section id="quiz" class="section py-16 md:py-24 max-w-3xl mx-auto px-4">
+        <!-- Quiz Intro -->
+        <div id="quizIntro" class="text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">اختبر معلوماتك</h2>
+            <p class="text-gray-600 mb-8 max-w-lg mx-auto">
+                اختبار تفاعلي شامل يتضمن 10 أسئلة متنوعة: اختيار من متعدد، مطابقة، وتصنيف. هل أنت مستعد؟
+            </p>
+            
+            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mb-10">
+                <div class="card text-center">
+                    <div class="text-2xl font-bold text-primary">10</div>
+                    <div class="text-sm text-gray-500">أسئلة</div>
+                </div>
+                <div class="card text-center">
+                    <div class="text-2xl font-bold text-secondary">3</div>
+                    <div class="text-sm text-gray-500">أنواع</div>
+                </div>
+                <div class="card text-center">
+                    <div class="text-2xl font-bold text-success">∞</div>
+                    <div class="text-sm text-gray-500">محاولات</div>
+                </div>
+            </div>
+            
+            <button class="btn-primary" onclick="showConfirmation()">
+                <i data-lucide="play" class="w-5 h-5"></i>
+                ابدأ الاختبار
+            </button>
+        </div>
+        
+        <!-- Quiz Playing -->
+        <div id="quizPlaying" class="hidden">
+            <!-- Progress -->
+            <div class="mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-500" id="questionCounter">السؤال 1 من 10</span>
+                    <span class="text-sm font-medium text-primary" id="progressPercent">10%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+                </div>
+            </div>
+            
+            <!-- Question Type Badge -->
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary-light text-primary" id="questionType">
+                    اختيار من متعدد
+                </span>
+            </div>
+            
+            <!-- Question Content -->
+            <div class="card mb-6" id="questionContent">
+                <!-- Question will be injected by JavaScript -->
+            </div>
+            
+            <!-- Navigation -->
+            <div class="flex items-center justify-between">
+                <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50" id="prevBtn" onclick="prevQuestion()">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    السابق
+                </button>
+                
+                <div class="flex gap-3">
+                    <button class="btn-secondary hidden" id="checkBtn" onclick="checkAnswer()">تحقق</button>
+                    <button class="btn-primary hidden" id="nextBtn" onclick="nextQuestion()">التالي</button>
+                </div>
+                
+                <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50" id="skipBtn" onclick="nextQuestion()">
+                    التالي
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Quiz Results -->
+        <div id="quizResults" class="hidden">
+            <!-- Results will be injected by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <!-- Credits -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold">الأنظمة الاقتصادية</span>
+                </div>
+                
+                <div class="space-y-3 text-gray-600">
+                    <p class="text-lg">
+                        <span class="font-semibold text-gray-900">من تطوير:</span>
+                        رضوان عزالدين و محمد رسلان
+                    </p>
+                    <p class="text-lg">
+                        <span class="font-semibold text-gray-900">تحت إشراف:</span>
+                        أحمد نصار
+                    </p>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <p class="text-gray-600">
+                        <span class="font-semibold text-gray-900">من إعداد:</span>
+                        مدرسة الحسن الثانوية — جمعية المبرّات
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="pt-6 border-t border-gray-200 text-center">
+                <p class="text-sm text-gray-500 flex items-center justify-center gap-2">
+                    صُنع بـ
+                    <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-red-500"></i>
+                    لنشر العلم والمعرفة
+                </p>
+                <p class="text-sm text-gray-500 mt-2" id="copyright">
+                    <!-- Copyright year will be set by JavaScript -->
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal-content">
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="alert-circle" class="w-6 h-6 text-primary"></i>
+                <h3 class="text-xl font-bold">هل أنت مستعد؟</h3>
+            </div>
+            <p class="text-gray-600 mb-6">
+                سيبدأ الاختبار الآن ويتضمن 10 أسئلة متنوعة. يمكنك مراجعة إجاباتك والعودة للأسئلة السابقة في أي وقت.
+            </p>
+            <div class="flex gap-3">
+                <button class="btn-primary flex-1" onclick="startQuiz()">ابدأ الآن</button>
+                <button class="btn-outline flex-1" onclick="hideConfirmation()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== البيانات ====================
+        
+        // بيانات الأنظمة الاقتصادية
+        const economicSystems = [
+            {
+                id: "capitalist",
+                name: "النظام الرأسمالي",
+                description: "نظام اقتصادي يقوم على الملكية الخاصة لوسائل الإنتاج وحرية السوق والمنافسة الحرة بين الأفراد والشركات.",
+                characteristics: [
+                    "الملكية الخاصة لوسائل الإنتاج",
+                    "حرية السوق والمنافسة",
+                    "السعي نحو الربح كمحرك أساسي",
+                    "تدخل حكومي محدود",
+                    "العرض والطلب يحددان الأسعار"
+                ],
+                pros: [
+                    "يشجع على الابتكار والإبداع",
+                    "كفاءة عالية في تخصيص الموارد",
+                    "حرية اقتصادية للأفراد",
+                    "تنوع كبير في السلع والخدمات",
+                    "نمو اقتصادي سريع"
+                ],
+                cons: [
+                    "عدم المساواة في توزيع الثروة",
+                    "إهمال الفئات الضعيفة",
+                    "تقلبات اقتصادية وأزمات دورية",
+                    "استغلال العمال أحياناً",
+                    "التأثير السلبي على البيئة"
+                ],
+                ownership: "خاصة",
+                governmentRole: "محدود جداً",
+                incentives: "الربح الفردي",
+                ethicalControl: "ضعيف",
+                icon: "trending-up",
+                color: "primary"
+            },
+            {
+                id: "socialist",
+                name: "النظام الاشتراكي",
+                description: "نظام اقتصادي يقوم على الملكية العامة أو الجماعية لوسائل الإنتاج مع تخطيط مركزي للاقتصاد.",
+                characteristics: [
+                    "الملكية العامة لوسائل الإنتاج",
+                    "التخطيط المركزي للاقتصاد",
+                    "توزيع عادل للثروة",
+                    "تدخل حكومي واسع",
+                    "العمل من أجل المصلحة العامة"
+                ],
+                pros: [
+                    "تقليل الفجوة بين الطبقات",
+                    "ضمان الخدمات الأساسية للجميع",
+                    "استقرار اقتصادي نسبي",
+                    "حماية العمال وحقوقهم",
+                    "الاهتمام بالبيئة والموارد"
+                ],
+                cons: [
+                    "بيروقراطية وبطء في اتخاذ القرارات",
+                    "ضعف الحافز الفردي للإنتاج",
+                    "نقص في التنوع والابتكار",
+                    "صعوبة تحديد الأسعار الحقيقية",
+                    "قد يؤدي إلى قمع الحريات"
+                ],
+                ownership: "عامة/جماعية",
+                governmentRole: "واسع جداً",
+                incentives: "المصلحة العامة",
+                ethicalControl: "متوسط",
+                icon: "users",
+                color: "secondary"
+            },
+            {
+                id: "mixed",
+                name: "النظام المختلط",
+                description: "نظام اقتصادي يجمع بين عناصر من النظام الرأسمالي والاشتراكي، مع توازن بين القطاعين العام والخاص.",
+                characteristics: [
+                    "مزيج من الملكية العامة والخاصة",
+                    "تدخل حكومي منظم",
+                    "حرية السوق مع ضوابط",
+                    "حماية اجتماعية للمواطنين",
+                    "تنظيم المنافسة ومنع الاحتكار"
+                ],
+                pros: [
+                    "توازن بين الكفاءة والعدالة",
+                    "مرونة في مواجهة الأزمات",
+                    "حماية الفئات الضعيفة",
+                    "تشجيع الاستثمار مع الرقابة",
+                    "استقرار اجتماعي أفضل"
+                ],
+                cons: [
+                    "صعوبة تحقيق التوازن المثالي",
+                    "تعقيد في الإدارة والتنظيم",
+                    "قد يرث عيوب النظامين",
+                    "صراع المصالح بين القطاعين",
+                    "تكاليف إدارية مرتفعة"
+                ],
+                ownership: "مختلطة",
+                governmentRole: "متوازن",
+                incentives: "فردي + عام",
+                ethicalControl: "متوسط-قوي",
+                icon: "scale",
+                color: "accent"
+            },
+            {
+                id: "islamic",
+                name: "النظام الإسلامي",
+                description: "نظام اقتصادي مبني على الشريعة الإسلامية، يحترم الملكية الخاصة مع مراعاة الأخلاق والعدالة الاجتماعية.",
+                characteristics: [
+                    "الملكية الخاصة مع ضوابط شرعية",
+                    "تحريم الربا والاستغلال",
+                    "الزكاة كأداة للتوزيع",
+                    "منع الاحتكار والغش",
+                    "التوازن بين الفرد والمجتمع"
+                ],
+                pros: [
+                    "عدالة اجتماعية حقيقية",
+                    "منع الاستغلال المالي",
+                    "تحقيق التكافل الاجتماعي",
+                    "أخلاقيات في المعاملات",
+                    "توازن بين الدنيا والآخرة"
+                ],
+                cons: [
+                    "صعوبة التطبيق الكامل حالياً",
+                    "اختلاف الفقهاء في بعض المسائل",
+                    "تحديات في التعامل الدولي",
+                    "حاجة لكوادر متخصصة",
+                    "مقاومة من الأنظمة التقليدية"
+                ],
+                ownership: "خاصة مع ضوابط",
+                governmentRole: "رقابي وتنظيمي",
+                incentives: "ربح حلال + أجر",
+                ethicalControl: "قوي جداً",
+                icon: "book-open",
+                color: "success"
+            }
+        ];
+        
+        // أسئلة الاختبار
+        const quizQuestions = [
+            {
+                id: 1,
+                type: "multiple-choice",
+                question: "ما هو المحرك الأساسي للنشاط الاقتصادي في النظام الرأسمالي؟",
+                options: [
+                    "المصلحة العامة والتعاون",
+                    "السعي نحو الربح والمنافسة",
+                    "التخطيط المركزي",
+                    "الزكاة والتكافل"
+                ],
+                correctAnswer: 1,
+                explanation: "في النظام الرأسمالي، يُعتبر السعي نحو الربح والمنافسة الحرة المحركين الأساسيين للنشاط الاقتصادي، حيث يسعى كل فرد أو شركة لتحقيق أقصى ربح ممكن."
+            },
+            {
+                id: 2,
+                type: "multiple-choice",
+                question: "أي من الأنظمة التالية يتميز بتدخل حكومي واسع في الاقتصاد؟",
+                options: [
+                    "النظام الرأسمالي",
+                    "النظام الإسلامي",
+                    "النظام الاشتراكي",
+                    "النظام المختلط"
+                ],
+                correctAnswer: 2,
+                explanation: "النظام الاشتراكي يتميز بتدخل حكومي واسع جداً، حيث تسيطر الدولة على وسائل الإنتاج وتخطط للاقتصاد مركزياً."
+            },
+            {
+                id: 3,
+                type: "multiple-choice",
+                question: "ما هي الأداة الرئيسية لإعادة توزيع الثروة في النظام الاقتصادي الإسلامي؟",
+                options: [
+                    "الضرائب التصاعدية",
+                    "الزكاة والصدقات",
+                    "التأمين الاجتماعي",
+                    "ملكية الدولة"
+                ],
+                correctAnswer: 1,
+                explanation: "الزكاة هي الركن الثالث من أركان الإسلام وتُعد الأداة الرئيسية لإعادة توزيع الثروة وتحقيق التكافل الاجتماعي في النظام الإسلامي."
+            },
+            {
+                id: 4,
+                type: "multiple-choice",
+                question: "ما هو العيب الرئيسي للنظام الرأسمالي؟",
+                options: [
+                    "البطء في اتخاذ القرارات",
+                    "عدم المساواة في توزيع الثروة",
+                    "نقص الابتكار والإبداع",
+                    "صعوبة التعامل الدولي"
+                ],
+                correctAnswer: 1,
+                explanation: "من أبرز عيوب النظام الرأسمالي هو تركز الثروة في أيدي قلة من الناس وزيادة الفجوة بين الأغنياء والفقراء."
+            },
+            {
+                id: 5,
+                type: "multiple-choice",
+                question: "أي نظام اقتصادي يجمع بين القطاعين العام والخاص؟",
+                options: [
+                    "النظام الرأسمالي",
+                    "النظام الاشتراكي",
+                    "النظام المختلط",
+                    "النظام الإسلامي"
+                ],
+                correctAnswer: 2,
+                explanation: "النظام المختلط يجمع بين عناصر النظام الرأسمالي والاشتراكي، حيث يتعايش القطاعان العام والخاص معاً تحت رقابة الدولة."
+            },
+            {
+                id: 6,
+                type: "multiple-choice",
+                question: "ما الذي يُحرّمه النظام الاقتصادي الإسلامي؟",
+                options: [
+                    "الملكية الخاصة",
+                    "التجارة الدولية",
+                    "الربا والاحتكار",
+                    "الاستثمار في المشاريع"
+                ],
+                correctAnswer: 2,
+                explanation: "يُحرّم النظام الإسلامي الربا (الفائدة) والاحتكار والغش، لأنها تؤدي إلى الظلم والاستغلال وعدم العدالة في المعاملات الاقتصادية."
+            },
+            {
+                id: 7,
+                type: "matching",
+                question: "صل كل نظام اقتصادي بالخاصية المميزة له:",
+                pairs: [
+                    { term: "النظام الرأسمالي", match: "حرية السوق والمنافسة" },
+                    { term: "النظام الاشتراكي", match: "الملكية العامة والتخطيط المركزي" },
+                    { term: "النظام الإسلامي", match: "تحريم الربا والزكاة" },
+                    { term: "النظام المختلط", match: "التوازن بين القطاعين" }
+                ],
+                explanation: "لكل نظام اقتصادي خصائص مميزة تُفرّقه عن غيره، وفهم هذه الخصائص ضروري لفهم طبيعة كل نظام."
+            },
+            {
+                id: 8,
+                type: "multiple-choice",
+                question: "ما هي ميزة النظام الاشتراكي في توفير الخدمات؟",
+                options: [
+                    "خصخصة جميع الخدمات",
+                    "ضمان الخدمات الأساسية للجميع",
+                    "ترك الخدمات للقطاع الخاص",
+                    "رفع أسعار الخدمات"
+                ],
+                correctAnswer: 1,
+                explanation: "من أهم مزايا النظام الاشتراكي ضمان توفير الخدمات الأساسية كالتعليم والصحة والإسكان لجميع المواطنين دون تمييز."
+            },
+            {
+                id: 9,
+                type: "sorting",
+                question: "صنّف المصطلحات التالية حسب النظام الاقتصادي المناسب:",
+                categories: [
+                    { category: "النظام الرأسمالي", items: ["الربح الفردي", "المنافسة الحرة"] },
+                    { category: "النظام الاشتراكي", items: ["التخطيط المركزي", "الملكية العامة"] },
+                    { category: "النظام الإسلامي", items: ["الزكاة", "تحريم الربا"] }
+                ],
+                explanation: "كل نظام اقتصادي له مصطلحات ومفاهيم خاصة به تعكس فلسفته وطريقة عمله."
+            },
+            {
+                id: 10,
+                type: "multiple-choice",
+                question: "ما هو الهدف الأسمى للنظام الاقتصادي الإسلامي؟",
+                options: [
+                    "تحقيق أقصى ربح ممكن",
+                    "سيطرة الدولة على الاقتصاد",
+                    "تحقيق العدالة والتوازن بين الدنيا والآخرة",
+                    "إلغاء الملكية الخاصة"
+                ],
+                correctAnswer: 2,
+                explanation: "يهدف النظام الإسلامي إلى تحقيق التوازن بين حاجات الدنيا والسعي للآخرة، مع ضمان العدالة الاجتماعية والأخلاق في المعاملات."
+            }
+        ];
+        
+        // ==================== متغيرات الحالة ====================
+        
+        let currentQuestion = 0;
+        let answers = new Array(quizQuestions.length).fill(null);
+        let showResult = false;
+        let sortKey = 'name';
+        let sortDirection = 'asc';
+        
+        // متغيرات سؤال المطابقة
+        let selectedTerm = null;
+        let matches = {};
+        let shuffledMatches = [];
+        
+        // متغيرات سؤال التصنيف
+        let sortedItems = {};
+        let availableItems = [];
+        let draggedItem = null;
+        
+        // ==================== الوظائف الرئيسية ====================
+        
+        // تهيئة الصفحة
+        function init() {
+            // تعيين سنة حقوق النشر
+            document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} جميع الحقوق محفوظة`;
+            
+            // تهيئة الأيقونات
+            lucide.createIcons();
+            
+            // تهيئة البطاقات
+            renderSystemCards();
+            
+            // تهيئة جدول المقارنة
+            renderComparisonTable();
+            
+            // تهيئة أحداث التمرير
+            initScrollEvents();
+            
+            // تهيئة قائمة الهاتف
+            initMobileMenu();
+            
+            // تهيئة أزرار التنقل
+            initNavigation();
+            
+            // تهيئة رؤوس الجدول
+            initTableSorting();
+        }
+        
+        // عرض بطاقات الأنظمة
+        function renderSystemCards() {
+            const grid = document.getElementById('systemsGrid');
+            
+            const colorClasses = {
+                primary: 'bg-primary text-white',
+                secondary: 'bg-secondary text-white',
+                accent: 'bg-teal-100 text-teal-800',
+                success: 'bg-success text-white'
+            };
+            
+            grid.innerHTML = economicSystems.map((system, index) => `
+                <div class="card animate-fade-up" style="animation-delay: ${index * 0.1}s;">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 ${colorClasses[system.color]}">
+                            <i data-lucide="${system.icon}" class="w-7 h-7"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">${system.name}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">${system.description}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-sm font-semibold mb-3">الخصائص الرئيسية</h4>
+                        <ul class="space-y-2">
+                            ${system.characteristics.slice(0, 3).map(char => `
+                                <li class="flex items-center gap-2 text-sm text-gray-600">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                                    ${char}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <button class="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium" onclick="toggleCard(this, '${system.id}')">
+                        <span>عرض المزيد</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    
+                    <div class="expanded-content hidden mt-6 pt-6 border-t border-gray-200 animate-fade-in space-y-6" id="expanded-${system.id}">
+                        ${system.characteristics.length > 3 ? `
+                            <ul class="space-y-2">
+                                ${system.characteristics.slice(3).map(char => `
+                                    <li class="flex items-center gap-2 text-sm text-gray-600">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                                        ${char}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        ` : ''}
+                        
+                        <div>
+                            <h4 class="flex items-center gap-2 text-sm font-semibold text-success mb-3">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                                المزايا
+                            </h4>
+                            <ul class="space-y-2">
+                                ${system.pros.map(pro => `
+                                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                                        <i data-lucide="check" class="w-4 h-4 text-success shrink-0 mt-0.5"></i>
+                                        ${pro}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="flex items-center gap-2 text-sm font-semibold text-destructive mb-3">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                                العيوب
+                            </h4>
+                            <ul class="space-y-2">
+                                ${system.cons.map(con => `
+                                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                                        <i data-lucide="x" class="w-4 h-4 text-destructive shrink-0 mt-0.5"></i>
+                                        ${con}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            lucide.createIcons();
+        }
+        
+        // تبديل عرض البطاقة
+        function toggleCard(btn, systemId) {
+            const expanded = document.getElementById(`expanded-${systemId}`);
+            const icon = btn.querySelector('[data-lucide="chevron-down"]');
+            const text = btn.querySelector('span');
+            
+            if (expanded.classList.contains('hidden')) {
+                expanded.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                text.textContent = 'عرض أقل';
+            } else {
+                expanded.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+                text.textContent = 'عرض المزيد';
+            }
+        }
+        
+        // عرض جدول المقارنة
+        function renderComparisonTable() {
+            const tbody = document.getElementById('comparisonBody');
+            
+            const sortedSystems = [...economicSystems].sort((a, b) => {
+                const aValue = a[sortKey];
+                const bValue = b[sortKey];
+                const comparison = aValue.localeCompare(bValue, 'ar');
+                return sortDirection === 'asc' ? comparison : -comparison;
+            });
+            
+            tbody.innerHTML = sortedSystems.map((system, index) => `
+                <tr>
+                    <td class="font-semibold">${system.name}</td>
+                    <td>${system.ownership}</td>
+                    <td>${system.governmentRole}</td>
+                    <td>${system.incentives}</td>
+                    <td>${system.ethicalControl}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // تهيئة فرز الجدول
+        function initTableSorting() {
+            const headers = document.querySelectorAll('#comparisonTable th');
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const key = header.dataset.sort;
+                    if (sortKey === key) {
+                        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        sortKey = key;
+                        sortDirection = 'asc';
+                    }
+                    renderComparisonTable();
+                });
+            });
+        }
+        
+        // التنقل إلى قسم
+        function navigateTo(section) {
+            const element = document.getElementById(section);
+            if (element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // تحديث زر التنقل النشط
+                updateActiveNav(section);
+            }
+        }
+        
+        // تحديث زر التنقل النشط
+        function updateActiveNav(section) {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.section === section) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // تهيئة أحداث التمرير
+        function initScrollEvents() {
+            window.addEventListener('scroll', () => {
+                // تحديث خلفية الشريط العلوي
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // تحديث القسم النشط
+                const sections = ['home', 'systems', 'comparison', 'quiz'];
+                const scrollPosition = window.scrollY + 100;
+                
+                for (const section of sections) {
+                    const element = document.getElementById(section);
+                    if (element) {
+                        const offsetTop = element.offsetTop;
+                        const offsetHeight = element.offsetHeight;
+                        
+                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                            updateActiveNav(section);
+                            break;
+                        }
+                    }
+                }
+                
+                // إظهار الأقسام عند التمرير
+                document.querySelectorAll('.section').forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        section.classList.add('visible');
+                    }
+                });
+            });
+        }
+        
+        // تهيئة قائمة الهاتف
+        function initMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileNav');
+            const icon = document.getElementById('menuIcon');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('open');
+                if (menu.classList.contains('open')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+        }
+        
+        // تهيئة أزرار التنقل
+        function initNavigation() {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    navigateTo(btn.dataset.section);
+                    
+                    // إغلاق قائمة الهاتف
+                    const menu = document.getElementById('mobileNav');
+                    menu.classList.remove('open');
+                    const icon = document.getElementById('menuIcon');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+        }
+        
+        // ==================== وظائف الاختبار ====================
+        
+        // إظهار رسالة التأكيد
+        function showConfirmation() {
+            document.getElementById('confirmationModal').classList.add('active');
+        }
+        
+        // إخفاء رسالة التأكيد
+        function hideConfirmation() {
+            document.getElementById('confirmationModal').classList.remove('active');
+        }
+        
+        // بدء الاختبار
+        function startQuiz() {
+            hideConfirmation();
+            currentQuestion = 0;
+            answers = new Array(quizQuestions.length).fill(null);
+            showResult = false;
+            
+            document.getElementById('quizIntro').classList.add('hidden');
+            document.getElementById('quizPlaying').classList.remove('hidden');
+            document.getElementById('quizResults').classList.add('hidden');
+            
+            renderQuestion();
+        }
+        
+        // عرض السؤال الحالي
+        function renderQuestion() {
+            const question = quizQuestions[currentQuestion];
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            
+            // تحديث شريط التقدم
+            document.getElementById('questionCounter').textContent = `السؤال ${currentQuestion + 1} من ${quizQuestions.length}`;
+            document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            // تحديث نوع السؤال
+            const typeLabels = {
+                'multiple-choice': 'اختيار من متعدد',
+                'matching': 'مطابقة',
+                'sorting': 'تصنيف'
+            };
+            document.getElementById('questionType').textContent = typeLabels[question.type];
+            
+            // عرض محتوى السؤال
+            const content = document.getElementById('questionContent');
+            
+            if (question.type === 'multiple-choice') {
+                renderMultipleChoice(content, question);
+            } else if (question.type === 'matching') {
+                renderMatching(content, question);
+            } else if (question.type === 'sorting') {
+                renderSorting(content, question);
+            }
+            
+            // تحديث أزرار التنقل
+            updateNavigationButtons();
+            
+            lucide.createIcons();
+        }
+        
+        // عرض سؤال الاختيار من متعدد
+        function renderMultipleChoice(container, question) {
+            const selectedAnswer = answers[currentQuestion];
+            
+            container.innerHTML = `
+                <h3 class="text-xl font-bold mb-6">${question.question}</h3>
+                <div class="space-y-3">
+                    ${question.options.map((option, index) => {
+                        let optionClass = 'quiz-option';
+                        let icon = '';
+                        
+                        if (showResult) {
+                            if (index === question.correctAnswer) {
+                                optionClass = 'quiz-option correct';
+                                icon = '<i data-lucide="check" class="w-5 h-5 text-success"></i>';
+                            } else if (selectedAnswer === index && index !== question.correctAnswer) {
+                                optionClass = 'quiz-option incorrect';
+                                icon = '<i data-lucide="x" class="w-5 h-5 text-destructive"></i>';
+                            }
+                        } else if (selectedAnswer === index) {
+                            optionClass = 'quiz-option selected';
+                        }
+                        
+                        return `
+                            <button class="${optionClass}" onclick="selectOption(${index})" ${showResult ? 'disabled' : ''}>
+                                <div class="flex items-center justify-between">
+                                    <span>${option}</span>
+                                    ${icon}
+                                </div>
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+                ${showResult ? `
+                    <div class="mt-6 p-4 rounded-lg bg-teal-50 border border-teal-200 animate-fade-in">
+                        <h4 class="font-semibold mb-2">الشرح:</h4>
+                        <p class="text-gray-600">${question.explanation}</p>
+                    </div>
+                ` : ''}
+            `;
+        }
+        
+        // عرض سؤال المطابقة
+        function renderMatching(container, question) {
+            // تهيئة المطابقات إذا لم تكن موجودة
+            if (Object.keys(matches).length === 0 || currentQuestion !== lastMatchingQuestion) {
+                selectedTerm = null;
+                matches = {};
+                shuffledMatches = [...question.pairs.map(p => p.match)].sort(() => Math.random() - 0.5);
+                lastMatchingQuestion = currentQuestion;
+            }
+            
+            const isComplete = Object.keys(matches).length === question.pairs.length;
+            
+            container.innerHTML = `
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold">${question.question}</h3>
+                    ${!showResult ? `
+                        <button class="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-colors" onclick="resetMatching()">
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            إعادة
+                        </button>
+                    ` : ''}
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-semibold text-gray-500 mb-3">الأنظمة الاقتصادية</h4>
+                        ${question.pairs.map(pair => {
+                            let itemClass = 'match-item';
+                            let matchText = '';
+                            let icon = '';
+                            
+                            if (selectedTerm === pair.term) {
+                                itemClass = 'match-item selected';
+                            } else if (matches[pair.term]) {
+                                if (showResult) {
+                                    const correctMatch = question.pairs.find(p => p.term === pair.term)?.match;
+                                    if (matches[pair.term] === correctMatch) {
+                                        itemClass = 'match-item correct';
+                                        icon = '<i data-lucide="check" class="w-5 h-5 text-success"></i>';
+                                    } else {
+                                        itemClass = 'match-item incorrect';
+                                        icon = '<i data-lucide="x" class="w-5 h-5 text-destructive"></i>';
+                                    }
+                                } else {
+                                    itemClass = 'match-item matched';
+                                }
+                                matchText = `← ${matches[pair.term]}`;
+                            }
+                            
+                            return `
+                                <button class="${itemClass}" onclick="selectTerm('${pair.term}')" ${showResult || matches[pair.term] ? 'disabled' : ''}>
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium">${pair.term}</span>
+                                        <div class="flex items-center gap-2">
+                                            ${matchText ? `<span class="text-sm text-gray-500">${matchText}</span>` : ''}
+                                            ${icon}
+                                        </div>
+                                    </div>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-semibold text-gray-500 mb-3">الخصائص</h4>
+                        ${shuffledMatches.map(match => {
+                            const isUsed = Object.values(matches).includes(match);
+                            let itemClass = 'match-item';
+                            
+                            if (isUsed) {
+                                itemClass = 'match-item opacity-50 cursor-not-allowed';
+                            } else if (selectedTerm) {
+                                itemClass = 'match-item hover:border-primary cursor-pointer';
+                            }
+                            
+                            return `
+                                <button class="${itemClass}" onclick="selectMatch('${match}')" ${showResult || isUsed || !selectedTerm ? 'disabled' : ''}>
+                                    ${match}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+                
+                ${showResult ? `
+                    <div class="mt-6 p-4 rounded-lg bg-teal-50 border border-teal-200 animate-fade-in">
+                        <h4 class="font-semibold mb-2">الشرح:</h4>
+                        <p class="text-gray-600 mb-4">${question.explanation}</p>
+                        <div class="space-y-2">
+                            <h5 class="font-medium">الإجابات الصحيحة:</h5>
+                            ${question.pairs.map(pair => `
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">${pair.term}</span>
+                                    ← ${pair.match}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+        }
+        
+        let lastMatchingQuestion = -1;
+        let lastSortingQuestion = -1;
+        
+        // عرض سؤال التصنيف
+        function renderSorting(container, question) {
+            // تهيئة التصنيف إذا لم يكن موجوداً
+            if (Object.keys(sortedItems).length === 0 || currentQuestion !== lastSortingQuestion) {
+                const allItems = question.categories.flatMap(c => c.items);
+                availableItems = [...allItems].sort(() => Math.random() - 0.5);
+                sortedItems = Object.fromEntries(question.categories.map(c => [c.category, []]));
+                lastSortingQuestion = currentQuestion;
+            }
+            
+            const totalSorted = Object.values(sortedItems).flat().length;
+            const totalItems = question.categories.flatMap(c => c.items).length;
+            const isComplete = totalSorted === totalItems;
+            
+            container.innerHTML = `
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold">${question.question}</h3>
+                    ${!showResult ? `
+                        <button class="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-colors" onclick="resetSorting()">
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            إعادة
+                        </button>
+                    ` : ''}
+                </div>
+                
+                ${availableItems.length > 0 ? `
+                    <div class="p-4 rounded-lg bg-gray-50 border border-gray-200 mb-6">
+                        <h4 class="text-sm font-semibold text-gray-500 mb-3">اسحب المصطلحات إلى التصنيف المناسب:</h4>
+                        <div class="flex flex-wrap gap-2" id="availableItems">
+                            ${availableItems.map(item => `
+                                <div class="sort-item" draggable="true" ondragstart="dragStart(event, '${item}')" onclick="clickItem('${item}')">
+                                    <i data-lucide="grip-vertical" class="w-4 h-4 text-gray-400"></i>
+                                    <span>${item}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+                
+                <div class="grid md:grid-cols-3 gap-4">
+                    ${question.categories.map(category => `
+                        <div class="drop-zone" ondragover="dragOver(event)" ondrop="drop(event, '${category.category}')" onclick="dropClick('${category.category}')">
+                            <h4 class="font-semibold text-center mb-3">${category.category}</h4>
+                            <div class="space-y-2" id="category-${category.category.replace(/\s/g, '-')}">
+                                ${(sortedItems[category.category] || []).map(item => {
+                                    const isCorrect = category.items.includes(item);
+                                    let itemClass = 'sort-item justify-between';
+                                    let icon = '';
+                                    
+                                    if (showResult) {
+                                        if (isCorrect) {
+                                            itemClass += ' border-success bg-green-50';
+                                            icon = '<i data-lucide="check" class="w-4 h-4 text-success"></i>';
+                                        } else {
+                                            itemClass += ' border-destructive bg-red-50';
+                                            icon = '<i data-lucide="x" class="w-4 h-4 text-destructive"></i>';
+                                        }
+                                    }
+                                    
+                                    return `
+                                        <div class="${itemClass}" onclick="${!showResult ? `removeFromCategory('${item}', '${category.category}')` : ''}">
+                                            <span class="text-sm">${item}</span>
+                                            ${icon}
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                ${showResult ? `
+                    <div class="mt-6 p-4 rounded-lg bg-teal-50 border border-teal-200 animate-fade-in">
+                        <h4 class="font-semibold mb-2">الشرح:</h4>
+                        <p class="text-gray-600 mb-4">${question.explanation}</p>
+                        <div class="space-y-3">
+                            <h5 class="font-medium">التصنيف الصحيح:</h5>
+                            ${question.categories.map(cat => `
+                                <div>
+                                    <span class="font-medium">${cat.category}: </span>
+                                    <span class="text-gray-600">${cat.items.join('، ')}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+        }
+        
+        // اختيار خيار
+        function selectOption(index) {
+            if (showResult) return;
+            answers[currentQuestion] = index;
+            renderQuestion();
+        }
+        
+        // اختيار مصطلح للمطابقة
+        function selectTerm(term) {
+            if (showResult || matches[term]) return;
+            selectedTerm = selectedTerm === term ? null : term;
+            renderQuestion();
+        }
+        
+        // اختيار مطابقة
+        function selectMatch(match) {
+            if (showResult || !selectedTerm) return;
+            if (Object.values(matches).includes(match)) return;
+            
+            matches[selectedTerm] = match;
+            selectedTerm = null;
+            
+            const question = quizQuestions[currentQuestion];
+            if (Object.keys(matches).length === question.pairs.length) {
+                const isAllCorrect = question.pairs.every(pair => matches[pair.term] === pair.match);
+                answers[currentQuestion] = isAllCorrect;
+            }
+            
+            renderQuestion();
+        }
+        
+        // إعادة تعيين المطابقة
+        function resetMatching() {
+            const question = quizQuestions[currentQuestion];
+            selectedTerm = null;
+            matches = {};
+            shuffledMatches = [...question.pairs.map(p => p.match)].sort(() => Math.random() - 0.5);
+            answers[currentQuestion] = null;
+            renderQuestion();
+        }
+        
+        // متغير لتخزين العنصر المحدد للنقر
+        let selectedItem = null;
+        
+        // النقر على عنصر للتصنيف
+        function clickItem(item) {
+            selectedItem = item;
+        }
+        
+        // النقر على فئة لإسقاط العنصر
+        function dropClick(category) {
+            if (selectedItem && availableItems.includes(selectedItem)) {
+                availableItems = availableItems.filter(i => i !== selectedItem);
+                sortedItems[category].push(selectedItem);
+                checkSortingComplete();
+                selectedItem = null;
+                renderQuestion();
+            }
+        }
+        
+        // بدء السحب
+        function dragStart(event, item) {
+            draggedItem = item;
+            event.target.classList.add('dragging');
+        }
+        
+        // السحب فوق
+        function dragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('drag-over');
+        }
+        
+        // الإسقاط
+        function drop(event, category) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+            
+            if (draggedItem) {
+                availableItems = availableItems.filter(i => i !== draggedItem);
+                
+                // إزالة من أي فئة أخرى
+                Object.keys(sortedItems).forEach(cat => {
+                    sortedItems[cat] = sortedItems[cat].filter(i => i !== draggedItem);
+                });
+                
+                sortedItems[category].push(draggedItem);
+                draggedItem = null;
+                
+                checkSortingComplete();
+                renderQuestion();
+            }
+        }
+        
+        // إزالة من فئة
+        function removeFromCategory(item, category) {
+            if (showResult) return;
+            sortedItems[category] = sortedItems[category].filter(i => i !== item);
+            availableItems.push(item);
+            answers[currentQuestion] = null;
+            renderQuestion();
+        }
+        
+        // إعادة تعيين التصنيف
+        function resetSorting() {
+            const question = quizQuestions[currentQuestion];
+            const allItems = question.categories.flatMap(c => c.items);
+            availableItems = [...allItems].sort(() => Math.random() - 0.5);
+            sortedItems = Object.fromEntries(question.categories.map(c => [c.category, []]));
+            answers[currentQuestion] = null;
+            renderQuestion();
+        }
+        
+        // التحقق من اكتمال التصنيف
+        function checkSortingComplete() {
+            const question = quizQuestions[currentQuestion];
+            const totalSorted = Object.values(sortedItems).flat().length;
+            const totalItems = question.categories.flatMap(c => c.items).length;
+            
+            if (totalSorted === totalItems) {
+                const isAllCorrect = question.categories.every(cat => {
+                    const sortedInCat = sortedItems[cat.category] || [];
+                    return cat.items.every(item => sortedInCat.includes(item)) && 
+                           sortedInCat.every(item => cat.items.includes(item));
+                });
+                answers[currentQuestion] = isAllCorrect;
+            }
+        }
+        
+        // تحديث أزرار التنقل
+        function updateNavigationButtons() {
+            const question = quizQuestions[currentQuestion];
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const checkBtn = document.getElementById('checkBtn');
+            const skipBtn = document.getElementById('skipBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            skipBtn.disabled = currentQuestion === quizQuestions.length - 1;
+            
+            if (question.type === 'multiple-choice') {
+                if (showResult) {
+                    checkBtn.classList.add('hidden');
+                    nextBtn.classList.remove('hidden');
+                    nextBtn.textContent = currentQuestion < quizQuestions.length - 1 ? 'التالي' : 'عرض النتائج';
+                } else {
+                    checkBtn.classList.remove('hidden');
+                    checkBtn.disabled = answers[currentQuestion] === null;
+                    nextBtn.classList.add('hidden');
+                }
+            } else {
+                checkBtn.classList.add('hidden');
+                nextBtn.classList.remove('hidden');
+                nextBtn.textContent = currentQuestion < quizQuestions.length - 1 ? 'التالي' : 'عرض النتائج';
+            }
+        }
+        
+        // التحقق من الإجابة
+        function checkAnswer() {
+            showResult = true;
+            renderQuestion();
+        }
+        
+        // السؤال التالي
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                showResult = false;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+        
+        // السؤال السابق
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showResult = false;
+                renderQuestion();
+            }
+        }
+        
+        // عرض النتائج
+        function showResults() {
+            const score = calculateScore();
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            
+            let feedback;
+            if (percentage >= 90) {
+                feedback = { title: 'ممتاز! 🎉', message: 'أداء رائع! أنت خبير في الأنظمة الاقتصادية!', color: 'text-success' };
+            } else if (percentage >= 70) {
+                feedback = { title: 'جيد جداً! 👏', message: 'لديك فهم جيد للأنظمة الاقتصادية. استمر!', color: 'text-primary' };
+            } else if (percentage >= 50) {
+                feedback = { title: 'جيد! 👍', message: 'بداية جيدة! راجع المحتوى وحاول مرة أخرى.', color: 'text-secondary' };
+            } else {
+                feedback = { title: 'حاول مجدداً! 💪', message: 'لا تستسلم! راجع الأنظمة الاقتصادية وأعد المحاولة.', color: 'text-gray-500' };
+            }
+            
+            const stars = Math.ceil(percentage / 20);
+            
+            document.getElementById('quizPlaying').classList.add('hidden');
+            document.getElementById('quizResults').classList.remove('hidden');
+            
+            document.getElementById('quizResults').innerHTML = `
+                <div class="animate-scale-in">
+                    <div class="text-center mb-10">
+                        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6">
+                            <i data-lucide="trophy" class="w-12 h-12 text-primary"></i>
+                        </div>
+                        
+                        <h2 class="text-3xl font-bold mb-2">نتيجة الاختبار</h2>
+                        
+                        <div class="flex items-center justify-center gap-4 my-6">
+                            <div class="text-6xl font-bold text-primary">${score}</div>
+                            <div class="text-2xl text-gray-500">/ ${quizQuestions.length}</div>
+                        </div>
+                        
+                        <div class="progress-bar w-full max-w-md mx-auto mb-4">
+                            <div class="progress-fill" style="width: ${percentage}%"></div>
+                        </div>
+                        
+                        <div class="text-2xl font-bold mb-2">${percentage}%</div>
+                        
+                        <div class="text-xl font-semibold ${feedback.color} mb-2">${feedback.title}</div>
+                        <p class="text-gray-500 max-w-md mx-auto">${feedback.message}</p>
+                        
+                        <div class="flex items-center justify-center gap-2 mt-6">
+                            ${[1, 2, 3, 4, 5].map(star => `
+                                <i data-lucide="star" class="w-8 h-8 ${star <= stars ? 'text-secondary fill-secondary' : 'text-gray-300'}"></i>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-8">
+                        <h3 class="text-xl font-bold mb-6">مراجعة الإجابات</h3>
+                        
+                        <div class="space-y-4">
+                            ${quizQuestions.map((question, index) => {
+                                const isCorrect = question.type === 'multiple-choice' 
+                                    ? answers[index] === question.correctAnswer 
+                                    : answers[index] === true;
+                                
+                                return `
+                                    <div class="p-4 rounded-lg border ${isCorrect ? 'border-success/50 bg-green-50' : 'border-destructive/50 bg-red-50'}">
+                                        <div class="flex items-start gap-3">
+                                            <i data-lucide="${isCorrect ? 'check-circle' : 'x-circle'}" class="w-5 h-5 ${isCorrect ? 'text-success' : 'text-destructive'} shrink-0 mt-0.5"></i>
+                                            <div>
+                                                <div class="font-medium mb-2">السؤال ${index + 1}: ${question.question}</div>
+                                                ${question.type === 'multiple-choice' ? `
+                                                    <div class="text-sm text-gray-600">
+                                                        <span class="font-medium">الإجابة الصحيحة: </span>
+                                                        ${question.options[question.correctAnswer]}
+                                                    </div>
+                                                ` : ''}
+                                                <div class="text-sm text-gray-600 mt-2">${question.explanation}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn-primary" onclick="restartQuiz()">
+                            <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                            أعد الاختبار
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            lucide.createIcons();
+        }
+        
+        // حساب النتيجة
+        function calculateScore() {
+            return quizQuestions.reduce((score, q, index) => {
+                if (q.type === 'multiple-choice') {
+                    return score + (answers[index] === q.correctAnswer ? 1 : 0);
+                }
+                return score + (answers[index] === true ? 1 : 0);
+            }, 0);
+        }
+        
+        // إعادة الاختبار
+        function restartQuiz() {
+            currentQuestion = 0;
+            answers = new Array(quizQuestions.length).fill(null);
+            showResult = false;
+            matches = {};
+            sortedItems = {};
+            availableItems = [];
+            lastMatchingQuestion = -1;
+            lastSortingQuestion = -1;
+            
+            document.getElementById('quizIntro').classList.remove('hidden');
+            document.getElementById('quizPlaying').classList.add('hidden');
+            document.getElementById('quizResults').classList.add('hidden');
+        }
+        
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
